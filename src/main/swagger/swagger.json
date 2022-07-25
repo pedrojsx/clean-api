@@ -1,0 +1,27 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Onfly API",
+    "description": "Onfly API: Clean Architecture",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/api",
+      "description": "Servidor Local"
+    }
+  ],
+  "tags": [
+    {
+      "name": "",
+      "description": ""
+    }
+  ],
+  "paths": [],
+  "components": {
+    "parameters": {},
+    "responses": {},
+    "requestBodies": {},
+    "schemas": {}
+  }
+}
