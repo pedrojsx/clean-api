@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "es2021",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": "src",
+    "noImplicitOverride": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@/*": ["*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": ["src"],
+  "exclude": []
+}
