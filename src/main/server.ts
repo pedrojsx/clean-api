@@ -1,5 +1,8 @@
-import server from '@/main/config/app'
+import './config/module-alias'
+import { server } from '@/main/config/app'
+import env from './config/env'
 
-server.listen(3333, () => {
-  console.log('Server running on localhost:3333')
+server.listen(env.port, () => {
+  console.log(`Environment: ${env.environment.toUpperCase()}`)
+  console.log(`Server running on http://${env.serverHost}:${env.port}`)
 })

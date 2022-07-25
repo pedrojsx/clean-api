@@ -2,9 +2,9 @@ import express from 'express'
 import handleSwagger from './config-swagger'
 import handleMiddlewares from './middlewares'
 
-const app = express()
+const server = express()
 
-handleSwagger(app)
-handleMiddlewares(app)
+handleSwagger(server)
+handleMiddlewares(server)
 
-export default app
+export { server }
