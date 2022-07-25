@@ -1,5 +1,5 @@
-import express from 'express'
+import server from '@/main/config/app'
 
-const server = express()
-
-export default server
+server.listen(3333, () => {
+  console.log('Server running on localhost:3333')
+})
