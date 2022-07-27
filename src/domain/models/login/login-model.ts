@@ -5,6 +5,6 @@ export namespace LoginModel {
   }
   export type Output = {
     email: string | null | undefined
-    dateLogin: Date
-  }
+    token: string
+  } | null
 }
