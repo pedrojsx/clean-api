@@ -3,7 +3,7 @@ export interface HttpRequest {
   pathParams: any
   body: any
   headers: any
-  userAurh?: any
+  userAuth?: any
 }
 
 export interface HttpResponse {

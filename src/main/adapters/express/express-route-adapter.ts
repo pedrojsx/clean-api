@@ -1,3 +1,4 @@
+import { BusinessError } from '@/domain/errors/business-error'
 import { Controller, HttpRequest } from '@/presentation/protocols'
 import { Request, Response } from 'express'
 
@@ -8,11 +9,15 @@ export const routeHandler = (controller: Controller) => {
       pathParams: request.params,
       headers: request.headers,
       body: request.body,
-      userAurh: request.userAuth
+      userAuth: request.userAuth
     }
 
     const httpResponse = await controller.handle(httpRequest)
-    response.status(httpResponse.statusCode).json({ data: httpResponse.body })
+    if (httpResponse.body?.error instanceof BusinessError) {
+      response.status(httpResponse.statusCode).json({ error: httpResponse.body.error.message })
+    } else {
+      response.status(httpResponse.statusCode).json(httpResponse.body)
+    }
     return httpResponse
   }
 }
