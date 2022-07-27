@@ -1,7 +1,6 @@
 import { Router } from 'express'
+import { postLoginController } from '../factories/controllers/login/post-login-controller-factory'
 
 export default (router: Router): void => {
-  router.get('/login', (req, res) => {
-    return res.status(201).json({ env: true })
-  })
+  router.post('/login', postLoginController)
 }
