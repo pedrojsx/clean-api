@@ -1,7 +1,7 @@
-import { UserProtocols } from '@/data/protocols/user/user-protocols'
+import { FindAllUsers, FindOneUser } from '@/data/protocols/user/user-protocols'
 import { UserModel } from '@/domain/models/user/user-model'
 
-export class UserRepository implements UserProtocols {
+export class UserRepository implements FindAllUsers, FindOneUser {
   async findOne (email: string): Promise<UserModel.Output> {
     const users: Array<UserModel.Output> = [
       {

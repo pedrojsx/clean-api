@@ -18,7 +18,7 @@ export class LogUser implements LoginProtocol {
 
     return {
       email: user.email,
-      token: await this.jwtAdapter.signToken(user?.email)
+      token: await this.jwtAdapter.signToken(user)
     }
   }
 }
