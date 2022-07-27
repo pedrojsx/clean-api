@@ -1,5 +1,5 @@
 import './config/module-alias'
-import { server } from '@/main/config/app'
+import server from '@/main/config/app'
 import env from './config/env'
 
 server.listen(env.port, () => {
