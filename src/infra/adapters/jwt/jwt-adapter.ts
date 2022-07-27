@@ -11,8 +11,12 @@ export class JwtAdapter implements JwtProtocols {
     return jwt.sign(data, this.secret, this.options)
   }
 
-  async validateToken (cipherText: string): Promise<string> {
-    const plainText = jwt.verify(cipherText, this.secret) as string
-    return plainText
+  async validateToken (cipherText: string): Promise<string | null> {
+    try {
+      const plainText = jwt.verify(cipherText, this.secret) as string
+      return plainText
+    } catch (error: any) {
+      return null
+    }
   }
 }

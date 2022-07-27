@@ -1,8 +1,8 @@
 export interface HttpRequest {
-  queryParams: any
-  pathParams: any
-  body: any
-  headers: any
+  queryParams?: any
+  pathParams?: any
+  body?: any
+  headers?: any
   userAuth?: any
 }
 

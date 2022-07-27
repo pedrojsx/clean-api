@@ -6,4 +6,4 @@ const makeJwtAdapterFactory = (): JwtProtocols => {
   return new JwtAdapter(env.jwt.secret)
 }
 
-export const jwtAdapterFactory = makeJwtAdapterFactory()
+export const jwtAdapter = makeJwtAdapterFactory()
