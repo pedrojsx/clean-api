@@ -10,8 +10,8 @@ export class PostLoginController implements Controller {
     const httpResponse = await this.loginUser.login(request.body)
 
     return {
-      statusCode: 200,
-      body: httpResponse
+      statusCode: httpResponse.email ? 200 : 400,
+      body: httpResponse || {}
     }
   }
 }

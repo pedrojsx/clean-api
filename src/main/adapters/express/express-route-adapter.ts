@@ -12,7 +12,7 @@ export const routeHandler = (controller: Controller) => {
     }
 
     const httpResponse = await controller.handle(httpRequest)
-    response.status(httpResponse.statusCode).json(httpResponse.body)
+    response.status(httpResponse.statusCode).json({ data: httpResponse.body })
     return httpResponse
   }
 }

@@ -1,10 +1,11 @@
-export namespace LoginModel {
+export namespace UserModel {
   export type Input = {
     email: string
     password: string
   }
+
   export type Output = {
-    email: string | null | undefined
-    dateLogin: Date
-  }
+    email: string
+    password: string
+  } | null
 }
