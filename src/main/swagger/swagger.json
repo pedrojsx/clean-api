@@ -7,21 +7,218 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3333/api",
+      "url": "http://localhost:3333/api/vi",
       "description": "Servidor Local"
     }
   ],
   "tags": [
     {
-      "name": "",
-      "description": ""
+      "name": "Login",
+      "description": "Endpoints relacionadas aos login"
+    },
+    {
+      "name": "Usuário",
+      "description": "Endpoints relacionadas aos usuários"
     }
   ],
-  "paths": [],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Login"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Rota de login",
+        "description": "Login de usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/loginResponseBody"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["Usuário"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "",
+        "description": "",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/usersResponseBody"
+          }
+        }
+      }
+
+    },
+    "/user": {
+      "post": {
+        "tags": ["Usuário"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "",
+        "description": "",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/userResponseBody"
+          }
+        }
+      }
+    }
+  },
   "components": {
-    "parameters": {},
-    "responses": {},
-    "requestBodies": {},
-    "schemas": {}
+    "responses": {
+      "loginResponseBody": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/login"
+                }
+              }
+            }
+          }
+        }
+      },
+      "usersResponseBody": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "data": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "$ref": "#/components/schemas/user"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "userResponseBody": {
+        "description": "Sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "loginRequestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        }
+      },
+      "userResponseBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "$ref": "#/components/schemas/user"
+              }
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "user": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "ayrtonsenna@onfly.com.br"
+          },
+          "password": {
+            "type": "string",
+            "example": "123456789"
+          }
+        }
+      },
+      "login": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "ayrtonsenna@onfly.com.br"
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF5cnRvbnNlbm5hQG9uZmx5LmNvbS5iciIsInBhc3N3b3JkIjoiMTIzNDU2Nzg5IiwiaWF0IjoxNjU4OTYwMzE1fQ.xqs-atM4rA9sE-aImY26OgUSRRuOqFJ_6PSVbm0Z0Ik"
+          }
+        }
+      }
+    }
   }
 }
