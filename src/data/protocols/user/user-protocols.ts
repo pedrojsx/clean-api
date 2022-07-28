@@ -7,3 +7,7 @@ export interface FindAllUsers {
 export interface FindOneUser {
   findOne: (email: string) => Promise<UserModel.Output>
 }
+
+export interface InsertUser {
+  insert: (user: UserModel.Input) => Promise<UserModel.Output>
+}

@@ -1,7 +1,7 @@
-import { FindAllUsers, FindOneUser } from '@/data/protocols/user/user-protocols'
+import { FindAllUsers, FindOneUser, InsertUser } from '@/data/protocols/user/user-protocols'
 import { UserModel } from '@/domain/models/user/user-model'
 
-export class UserRepository implements FindAllUsers, FindOneUser {
+export class UserRepository implements FindAllUsers, FindOneUser, InsertUser {
   private users: Array<UserModel.Output> = [
     {
       email: 'userdev@onfly.com.br',
@@ -25,5 +25,10 @@ export class UserRepository implements FindAllUsers, FindOneUser {
 
   async findAll (): Promise<Array<UserModel.Output>> {
     return this.users || null
+  }
+
+  async insert (data: UserModel.Input): Promise<UserModel.Output> {
+    this.users.push(data)
+    return data
   }
 }
